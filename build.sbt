@@ -8,7 +8,6 @@ licenses := Seq(
   ("MIT", url("http://opensource.org/licenses/MIT"))
 )
 
-
 lazy val compileSettings = Seq(
   scalacOptions := Seq(
     "-unchecked", "-deprecation", "-feature", "-encoding", "utf8",
@@ -20,6 +19,7 @@ lazy val root = (project in file("."))
   .settings(
     name := "simplifier-plugin-api",
     compileSettings,
+    // PublishToMavenCentral.settings,
     libraryDependencies ++= Seq(
       "org.scala-lang" % "scala-reflect" % scalaVersion.value,
       "com.typesafe.akka" %% "akka-actor" % akkaV withSources() withJavadoc(),
