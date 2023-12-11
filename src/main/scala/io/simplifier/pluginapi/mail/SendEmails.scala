@@ -15,7 +15,11 @@ object SendEmails extends resultMapper {
   case class binContent(mime:String, filename:String, content: Option[Array[Byte]], uploadSession: Option[String], contentB64: Option[String])
   case class content(mime:String, charset:String, content:String)
   case class email(receiver:String, subject:String, cc:List[String], bcc: List[String], body:content, emailUUID:String,
-                   sender: Option[String] = None)
+                   sender: Option[String] = None, mimeOptions: Option[MimeOptions] = None)
+
+  case class MimeOptions(allowUtf8: Option[Boolean],
+                         defaultCharset: Option[String])
+
   case class bulkEmails(emails:List[email], attachments:List[binContent] ) extends request
 
   case class emailTransport(success:Boolean,errorMessage:Option[String])
